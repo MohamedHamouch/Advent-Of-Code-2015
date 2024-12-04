@@ -1,18 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+const input =
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Challange 2</title>
-</head>
-
-<body>
-
-    <script>
-        const input =
-
-            `4x23x21
+`4x23x21
 22x29x19
 11x4x11
 8x10x5
@@ -1012,33 +1000,29 @@
 21x29x14
 20x29x30
 23x11x5`
-        const data = input.split('\n');
-        console.log(data)
-        let solution
-        function calcTotal() {
-            let ribbon = 0;
+const data = input.split('\n');
+console.log(data)
+let solution
+function calcTotal() {
+let ribbon = 0;
 
 
-            solution = data.reduce((total, box) => {
-                const demensions = box.split("x");
-                const [l, w, h] = demensions;
-                const surfaceArea = 2 * l * w + 2 * w * h + 2 * h * l;
-                const smallest = Math.min(l * w, w * h, h * l);
-                // console.log(l, w, h, smallest);
-                const sorted = demensions.sort((a, b) => { return a - b });
-                // console.log(sorted);
+solution = data.reduce((total, box) => {
+    const demensions = box.split("x");
+    const [l, w, h] = demensions;
+    const surfaceArea = 2 * l * w + 2 * w * h + 2 * h * l;
+    const smallest = Math.min(l * w, w * h, h * l);
+    // console.log(l, w, h, smallest);
+    const sorted = demensions.sort((a, b) => { return a - b });
+    // console.log(sorted);
 
-                ribbon += (demensions[0] * 2 + demensions[1] * 2) + l * w * h;
+    ribbon += (demensions[0] * 2 + demensions[1] * 2) + l * w * h;
 
-                return total + (2 * l * w + 2 * w * h + 2 * h * l + smallest);
+    return total + (2 * l * w + 2 * w * h + 2 * h * l + smallest);
 
-            }, 0);
+}, 0);
 
-            console.log(ribbon)
-        }
-        calcTotal();
-        console.log(solution);
-    </script>
-</body>
-
-</html>
+console.log(ribbon)
+}
+calcTotal();
+console.log(solution);
